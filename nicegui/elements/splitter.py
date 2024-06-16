@@ -1,4 +1,4 @@
-from typing import Any, Callable, Optional, Tuple
+from typing import Any, Callable, Optional, Tuple, Literal
 
 from .mixins.disableable_element import DisableableElement
 from .mixins.value_element import ValueElement
@@ -11,6 +11,7 @@ class Splitter(ValueElement, DisableableElement):
                  reverse: Optional[bool] = False,
                  limits: Optional[Tuple[float, float]] = (0, 100),
                  value: Optional[float] = 50,
+                 unit: Literal['%','px'] = '%',
                  on_change: Optional[Callable[..., Any]] = None,
                  ) -> None:
         """Splitter
@@ -34,6 +35,7 @@ class Splitter(ValueElement, DisableableElement):
         self._props['horizontal'] = horizontal
         self._props['limits'] = limits
         self._props['reverse'] = reverse
+        self._props['unit'] = unit
         self._classes.append('nicegui-splitter')
 
         self.before = self.add_slot('before')

@@ -65,6 +65,10 @@ class Input(ValidationElement, DisableableElement, component='input.js'):
 
         self._props['_autocomplete'] = autocomplete or []
 
+    def focus(self):
+        """Focus the input element."""
+        self.run_method('focus')
+
     def set_autocomplete(self, autocomplete: Optional[List[str]]) -> None:
         """Set the autocomplete list."""
         self._props['_autocomplete'] = autocomplete
